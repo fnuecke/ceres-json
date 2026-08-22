@@ -72,4 +72,19 @@ mavenPublishing {
 
 tasks.test {
     useJUnitPlatform()
+    systemProperty("li.cil.ceres.disableCodeGen", "false")
+}
+
+val testReflection = tasks.register<Test>("testReflection") {
+    description = "reflection-based serializer tests"
+    group = "verification"
+
+    useJUnitPlatform()
+    testClassesDirs = sourceSets.test.get().output.classesDirs
+    classpath = sourceSets.test.get().runtimeClasspath
+    systemProperty("li.cil.ceres.disableCodeGen", "true")
+}
+
+tasks.check {
+    dependsOn(testReflection)
 }
