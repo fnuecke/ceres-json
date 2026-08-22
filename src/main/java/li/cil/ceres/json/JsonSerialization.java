@@ -65,7 +65,7 @@ public final class JsonSerialization {
             case POSITIVE_INFINITY -> Double.POSITIVE_INFINITY;
             case NEGATIVE_INFINITY -> Double.NEGATIVE_INFINITY;
             default ->
-                    throw new SerializationException(String.format("Invalid non-finite floating-point value [%s].", value));
+                throw new SerializationException(String.format("Invalid non-finite floating-point value [%s].", value));
         };
     }
 
