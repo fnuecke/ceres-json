@@ -1,6 +1,6 @@
 plugins {
     `java-library`
-    id("com.vanniktech.maven.publish") version "0.34.0"
+    alias(libs.plugins.mavenPublish)
 }
 
 fun getGitRef(): String = try {
@@ -24,14 +24,14 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.google.code.findbugs:jsr305:3.0.2")
+    compileOnly(libs.jsr305)
 
-    api("li.cil.ceres:ceres:0.0.6")
-    api("com.google.code.gson:gson:2.13.1")
+    api(libs.ceres)
+    api(libs.gson)
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.8.2")
+    testImplementation(libs.junit.api)
+    testRuntimeOnly(libs.junit.engine)
+    testRuntimeOnly(libs.junit.launcher)
 }
 
 tasks.withType<AbstractArchiveTask>().configureEach {
